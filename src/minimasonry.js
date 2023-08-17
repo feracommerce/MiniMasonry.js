@@ -20,7 +20,8 @@ var MiniMasonry = function(conf) {
         ultimateGutter: 5,
         surroundingGutter: true,
         direction: 'ltr',
-        wedge: false
+        wedge: false,
+        numberOfColumnsOnMobile: 1
     };
 
     this.init(conf);
@@ -89,6 +90,13 @@ MiniMasonry.prototype.reset = function() {
 MiniMasonry.prototype.getCount = function() {
     if (this.conf.surroundingGutter) {
         return Math.floor((this._width - this._currentGutterX) / (this.conf.baseWidth + this._currentGutterX));
+    }
+
+    if (this.conf.numberOfColumnsOnMobile && this.conf.numberOfColumnsOnMobile > 1 && this._width < 620) {
+        this._container.classList.add('mobileTwoColumns');
+        return this.conf.numberOfColumnsOnMobile;
+    } else {
+        this._container.classList.remove('mobileTwoColumns');
     }
 
     return Math.floor((this._width + this._currentGutterX) / (this.conf.baseWidth + this._currentGutterX));

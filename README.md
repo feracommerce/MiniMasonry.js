@@ -52,6 +52,15 @@ surroundingGutter (boolean)|true|Set left gutter on first columns and right gutt
 ultimateGutter (int)|5|Gutter applied when only 1 column can be displayed.
 direction (string)|"ltr"|Sorting direction, "ltr" or "rtl".
 wedge (boolean)|false|False will start to sort from center, true will start from left or right according to direction parameter.
+minCols (int)|1|Minimum number of columns to show. If set to 2 then resizing will never go lower than 2 columns even in small-width devices (like mobile).
+
+## Development
+1. Install rollup `npm install --global rollup`
+2. Run `yarn`
+3. Change code in `src/` folder
+4. Run `yarn build`
+
+You can point your `package.json` in another repo to the folder with `file:../sdk/MiniMasonry.js/` or something like that so you can test your changes without having to push up code. 
 
 ## API
 

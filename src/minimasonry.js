@@ -99,14 +99,16 @@ MiniMasonry.prototype.getCount = function() {
 
 MiniMasonry.prototype.computeWidth = function() {
     var width;
+
     if (this.conf.surroundingGutter) {
         width = ((this._width - this._currentGutterX) / this._count) - this._currentGutterX;
     } else {
         width = ((this._width + this._currentGutterX) / this._count) - this._currentGutterX;
     }
-    width = Number.parseFloat(width.toFixed(2));
 
-    return width;
+    // We want to round to the nearest whole number here or else we see 0.5px white borders on some bordered things.
+    // PS: Not sure why need to `parseFloat` here but leaving it here to avoid breaking anything I'm unaware of.
+    return Math.round(Number.parseFloat(width));
 }
 
 MiniMasonry.prototype.layout =  function() {

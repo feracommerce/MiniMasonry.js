@@ -6,3 +6,5 @@ node_modules/
 *.swo
 *.out
 ._*
+
+yarn-error.log
